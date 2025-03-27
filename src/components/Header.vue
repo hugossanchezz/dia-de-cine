@@ -14,26 +14,22 @@
       >
         <div class="nav__item">
           <router-link to="/peliculas" class="centrado-flex font-size-pequenio">
-            <span v-if="idioma === 'es'">Películas</span>
-            <span v-if="idioma === 'en'">Movies</span>
+            Películas
           </router-link>
         </div>
         <div class="nav__item">
           <router-link to="/series" class="centrado-flex font-size-pequenio">
-            <span v-if="idioma === 'es'">Series</span>
-            <span v-if="idioma === 'en'">TV Shows</span>
+            Series
           </router-link>
         </div>
         <div class="nav__item">
           <router-link to="/comunidad" class="centrado-flex font-size-pequenio">
-            <span v-if="idioma === 'es'">Comunidad</span>
-            <span v-if="idioma === 'en'">Community</span>
+            Comunidad
           </router-link>
         </div>
         <div class="nav__item">
           <router-link to="/nosotros" class="centrado-flex font-size-pequenio">
-            <span v-if="idioma === 'es'">Nosotros</span>
-            <span v-if="idioma === 'en'">About Us</span>
+            Nosotros
           </router-link>
         </div>
         <div class="nav__item">
@@ -41,8 +37,7 @@
             to="/mi-espacio"
             class="centrado-flex font-size-pequenio"
           >
-            <span v-if="idioma === 'es'">Mi espacio</span>
-            <span v-if="idioma === 'en'">My Space</span>
+            Mi espacio
             <img
               class="item__bookmark"
               src="/img/ico/bookmark.svg"
@@ -63,26 +58,15 @@
         id="input-busqueda"
         class="oculto input-busqueda inputForm input"
         type="text"
-        :placeholder="idioma === 'es' ? 'Buscar...' : 'Search...'"
+        placeholder="Buscar..."
       />
 
       <div class="acciones__container centrado-flex">
 
-        <!-- Select para elegir el idioma -->
-        <select
-          class="acciones__idioma"
-          v-model="idioma"
-          @change="cambiarIdioma"
-        >
-          <option value="es">🇪🇸 Español</option>
-          <option value="en">🇬🇧 English</option>
-        </select>
-
         <div v-if="!buscar" class="container__login">
           <div v-show="!registrado" class="boton-registrarse">
             <router-link to="/perfil/registro" class="centrado-flex">
-              <span v-if="idioma === 'es'">Registrarse</span>
-              <span v-if="idioma === 'en'">Sign Up</span>
+              Registrarse
             </router-link>
           </div>
           <router-link v-show="registrado" to="/perfil">
@@ -108,7 +92,6 @@
 </template>
 
 <script>
-import { cambiarIdioma, cargarIdioma } from "/src/js/idioma.js";
 
 export default {
   name: "Header",
@@ -118,11 +101,9 @@ export default {
       esMovil: window.innerWidth <= 1024,
       buscar: false,
       registrado: false,
-      idioma: cargarIdioma(), // Cargar idioma desde la cookie
     };
   },
   mounted() {
-    this.idioma = cargarIdioma(); // Asegurar que el select se inicialice con la cookie
     window.addEventListener("resize", this.actualizarTamano);
   },
   beforeUnmount() {
@@ -152,9 +133,6 @@ export default {
       if (!this.esMovil) {
         this.menuAbierto = false;
       }
-    },
-    cambiarIdioma() {
-      cambiarIdioma(this.idioma); // Guarda el idioma en la cookie
     },
   },
 };

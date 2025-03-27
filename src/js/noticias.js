@@ -1,19 +1,14 @@
-// Importar la función para obtener el idioma desde la cookie
-import { cargarIdioma } from "/src/js/idioma.js";
-
 // Clave de la API de NewsAPI
 const NEWS_API_KEY = '12d3de27068f4d33bf495c62d24a5fc8';
 
-// Función para construir la URL con el idioma dinámico
+// Función para construir la URL
 function construirUrl() {
-  const idioma = cargarIdioma(); // Obtener el idioma desde la cookie
   const baseUrl = 'https://newsapi.org/v2/everything';
   const query = 'q=cine%20estrenos%20actores'; // Consulta de ejemplo
   const apiKey = `apiKey=${NEWS_API_KEY}`;
-  const language = `language=${idioma}`;
 
   if (import.meta.env.MODE === 'development') {
-    return `/api/v2/everything?q=cine%20estrenos%20actores&apiKey=${NEWS_API_KEY}&language=${idioma}`;
+    return `/api/v2/everything?q=cine%20estrenos%20actores&apiKey=${NEWS_API_KEY}&language=es`;
   } else {
     return `${baseUrl}?${query}&${apiKey}&${language}`;
   }

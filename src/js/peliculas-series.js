@@ -1,9 +1,5 @@
-import { cargarIdioma } from "/src/js/idioma.js";
 
 const TMDB_API_KEY = 'c365316d4b5cda699202511cd0f0c9fe';
-
-// Obtener el idioma de la cookie
-const idioma = cargarIdioma();
 
 export async function obtenerTitulos(tipoTitulo, generoId = null, nombre = null, pagina = 1, filtrar = false) {
 
@@ -11,12 +7,12 @@ export async function obtenerTitulos(tipoTitulo, generoId = null, nombre = null,
     let url;
 
     if (nombre) {
-      url = `https://api.themoviedb.org/3/search/${tipoTitulo}?api_key=${TMDB_API_KEY}&language=${idioma}&page=${pagina}&include_adult=false&query=${encodeURIComponent(nombre)}`;
+      url = `https://api.themoviedb.org/3/search/${tipoTitulo}?api_key=${TMDB_API_KEY}&language=es&page=${pagina}&include_adult=false&query=${encodeURIComponent(nombre)}`;
     } else if (filtrar) {
-      url = `https://api.themoviedb.org/3/discover/${tipoTitulo}?api_key=${TMDB_API_KEY}&language=${idioma}&page=${pagina}&include_adult=false&without_genres=10749`;
+      url = `https://api.themoviedb.org/3/discover/${tipoTitulo}?api_key=${TMDB_API_KEY}&language=es&page=${pagina}&include_adult=false&without_genres=10749`;
       if (generoId) url += `&with_genres=${generoId}`;
     } else {
-      url = `https://api.themoviedb.org/3/${tipoTitulo}/top_rated?api_key=${TMDB_API_KEY}&language=${idioma}&page=${pagina}&include_adult=false`;
+      url = `https://api.themoviedb.org/3/${tipoTitulo}/top_rated?api_key=${TMDB_API_KEY}&language=es&page=${pagina}&include_adult=false`;
     }
 
     const response = await fetch(url);

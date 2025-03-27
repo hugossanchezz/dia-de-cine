@@ -23,8 +23,7 @@
       >
         <div class="titulo-noticias centrado-flex">
           <h1>
-            <span v-if="idioma === 'es'">Sección de Noticias </span>
-            <span v-if="idioma === 'en'">News Section </span>
+            Sección de Noticias 
             <span class="fecha">{{ fechaNoticias }}</span>
           </h1>
         </div>
@@ -40,8 +39,7 @@
             class="button-submit button-submit-pequenio"
             @click="mostrarMasNoticias"
           >
-            <span v-if="idioma === 'es'">Mostrar más noticias</span>
-            <span v-if="idioma === 'en'">Show more news</span>
+            Mostrar más noticias
           </button>
         </div>
       </div>
@@ -51,8 +49,7 @@
     <aside>
       <div class="titulo-estrenos centrado-flex">
         <h1>
-          <span v-if="idioma === 'es'">Próximos estrenos </span>
-          <span v-if="idioma === 'en'">Upcoming releases </span>
+          Próximos estrenos 
           <span class="fecha">{{ fechaEstrenos }}</span>
         </h1>
       </div>
@@ -71,7 +68,6 @@
 import { mostrarCarrusel } from "/src/js/carrusel.js";
 import { mostrarEstrenos } from "/src/js/estrenos.js";
 import { mostrarNoticias } from "/src/js/noticias.js";
-import { cargarIdioma } from "/src/js/idioma.js";
 
 import Header from "/src/components/Header.vue";
 import Footer from "/src/components/Footer.vue";
@@ -89,7 +85,6 @@ export default {
       fechaEstrenos: "",
       numNoticas: 8,
       numEstrenos: 15,
-      idioma: cargarIdioma(), // Se obtiene el idioma desde la función
     };
   },
   async mounted() {

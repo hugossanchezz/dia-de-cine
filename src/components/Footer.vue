@@ -33,7 +33,7 @@
       </div>
 
       <!-- Botón de donaciones "Buy Me a Coffee" -->
-      <div class="contacto__donaciones" @click="mostrarModalDonaciones()">
+      <div class="contacto__donaciones" >
         <img
           src="https://cdn.buymeacoffee.com/buttons/v2/default-white.png"
           alt="Buy Me a Coffee"
@@ -55,7 +55,7 @@
 
     <!-- Modales del footer -->
     <div
-      v-if="modalCorreoVisible || modalDonacionVisible"
+      v-if="modalCorreoVisible"
       class="overlay centrado-flex"
       @click="cerrarModales"
       tabindex="-1"
@@ -66,12 +66,8 @@
         @click="copiarEmail"
         @click.stop
       >
-        <span v-if="idioma === 'es'">
-          <h2>Haz <strong>click</strong> para copiar mi email.</h2>
-        </span>
-        <span v-if="idioma === 'en'">
-          <h2><strong>Click</strong> to copy my email.</h2>
-        </span>
+        <h2>Haz <strong>click</strong> para copiar mi email.</h2>
+
         <hr class="modal__hr" />
         <div class="modal__div flex">
           <div class="email-container flex">
@@ -98,20 +94,16 @@
         </button>
       </div>
     </div>
-
   </footer>
 </template>
 
 <script>
-import { cargarIdioma } from "/src/js/idioma.js";
-
 export default {
   name: "Footer",
   data() {
     return {
       modalCorreoVisible: false,
       currentYear: new Date().getFullYear(), // Obtener el año actual
-      idioma: cargarIdioma(), // Cargar idioma desde la cookie
     };
   },
   computed: {
